@@ -83,11 +83,12 @@ def find_components(path, transposed_adjacency_matrix):
             groups.append(group)
     return groups
 
+
 def show_components(group_of_components):
     for i in range(len(group_of_components)):
-        print("%s-а компонента зв'язності: " % (i+1))
+        print("%s-а компонента зв'язності: " % (i + 1))
         for j in range(len(group_of_components[i])):
-            print((group_of_components[i][j]+1), end=" ")
+            print((group_of_components[i][j] + 1), end=" ")
         print()
 
 
