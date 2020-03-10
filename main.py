@@ -68,8 +68,8 @@ def create_transposed_adjacency_matrix(e_data):
 def create_group(adjacency_matrix_my, s, heights, path, group):
     heights[s] = True
     for k in range(len(path)):
-        if adjacency_matrix_my[s][path[k]] == 1 and heights[path[k]] == False:
-            create_group(adjacency_matrix_my, path[k], heights,path, group)
+        if adjacency_matrix_my[s][path[k]] == 1 and not heights[path[k]]:
+            create_group(adjacency_matrix_my, path[k], heights, path, group)
     group.append(s)
 
 
@@ -83,10 +83,17 @@ def find_components(path, transposed_adjacency_matrix):
             groups.append(group)
     return groups
 
+def show_components(group_of_components):
+    for i in range(len(group_of_components)):
+        print("%s-а компонента зв'язності: " % (i+1))
+        for j in range(len(group_of_components[i])):
+            print((group_of_components[i][j]+1), end=" ")
+        print()
+
 
 data = get_data()
 
 pathMy = topological_sort(create_adjacency_matrix(data))
 
 components = find_components(pathMy, create_transposed_adjacency_matrix(data))
-print(components)
+show_components(components)
