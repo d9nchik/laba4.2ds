@@ -77,9 +77,9 @@ def find_components(path, transposed_adjacency_matrix):
     heights = [False] * len(transposed_adjacency_matrix)
     groups = []
     for v in range(len(heights)):
-        if not heights[v]:
+        if not heights[path[v]]:
             group = []
-            create_group(transposed_adjacency_matrix, v, heights, path, group)
+            create_group(transposed_adjacency_matrix, path[v], heights, path, group)
             groups.append(group)
     return groups
 
